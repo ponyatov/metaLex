@@ -1,0 +1,55 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        /* \ <section:tasks> */
+        {
+            "label":          "make: install",
+            "type":           "shell",
+            "command":        "make install",
+            "problemMatcher": []
+        },
+        {
+            "label":          "make: update",
+            "type":           "shell",
+            "command":        "make update",
+            "problemMatcher": []
+        },
+        {
+            "label":          "git: main",
+            "type":           "shell",
+            "command":        "make main",
+            "problemMatcher": []
+        },
+        {
+            "label":          "git: shadow",
+            "type":           "shell",
+            "command":        "make shadow",
+            "problemMatcher": []
+        },
+        {
+            "label":          "make: test",
+            "type":           "shell",
+            "command":        "make test",
+            "problemMatcher": []
+        },
+        {
+            "label":          "elixir: format",
+            "type":           "shell",
+            "command":        "make format",
+            "problemMatcher": []
+        },
+        {
+            "label":          "elixir: repl",
+            "type":           "shell",
+            "command":        "make repl",
+            "problemMatcher": []
+        },
+        {
+            "label":          "elixir: web",
+            "type":           "shell",
+            "command":        "make web",
+            "problemMatcher": []
+        },
+        /* / <section:tasks> */
+    ]
+}

@@ -1,0 +1,2 @@
+make git wget curl
+erlang elixir
