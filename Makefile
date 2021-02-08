@@ -34,6 +34,10 @@ format: $(MIX)
 .PHONY: repl
 repl: $(MIX)
 	$< $@
+
+.PHONY: test
+test: $(MIX)
+	$< $@
 # / <section:all>
 # \ <section:install>
 .PHONY: install
