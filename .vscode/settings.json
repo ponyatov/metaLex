@@ -9,7 +9,7 @@
         "sequence": [
             "workbench.action.files.saveAll",
             {"command": "workbench.action.terminal.sendSequence","args": {"text":
-                "\u000D clear ; make web \u000D"
+                "\u000D clear ; make repl \u000D"
             }}]
     },
     {
@@ -17,17 +17,21 @@
         "sequence": [
             "workbench.action.files.saveAll",
             {"command": "workbench.action.terminal.sendSequence","args": {"text":
-                "\u000D clear ; make format \u000D"
+                "\u000D System.stop \u000D"
             }}]
     },
 ],
 /* / <section:multi> */
 "files.watcherExclude": {
     /* \ <section:watcher> */
+    "**/_build/**":true,
+    "**/.elixir_ls/**":true,
     /* / <section:watcher> */
 },
 "files.exclude": {
     /* \ <section:exclude> */
+    "**/_build/**":true,
+    "**/.elixir_ls/**":true,
     /* / <section:exclude> */
 },
 "files.associations": {

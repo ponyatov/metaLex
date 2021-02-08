@@ -20,20 +20,29 @@ MIX          = $(shell which mix)
 ERL          = $(shell which erl)
 # / <section:tool>
 # \ <section:src>
-S += $(X)
+S  = .formatter.exs mix.exs
+S += lib/$(MODULE).ex lib/hello.ex
+S += test/test_helper.exs test/hello_test.exs test/metal_test.exs
+
+S += $(E) $(X)
 # / <section:src>
 # \ <section:all>
 .PHONY: all web
 all web: $(MIX)
-	$<
+	$(MIX) compile
+	$(MAKE) repl
 
 .PHONY: format
 format: $(MIX)
-	$< $@
+	$(MIX) $@
 
 .PHONY: repl
-repl: $(MIX)
-	$< $@
+repl: $(IEX) $(MIX)
+	$(MIX) format
+	$(MIX) compile
+	$(MIX) test
+	$(IEX) -S mix
+	$(MAKE) $@
 
 .PHONY: test
 test: $(MIX)
@@ -41,17 +50,19 @@ test: $(MIX)
 # / <section:all>
 # \ <section:install>
 .PHONY: install
-install: $(OS)_install js
+install: $(OS)_install
+	$(MAKE) update
 .PHONY: update
 update: $(OS)_update
+	$(MIX) deps.get
+	$(MIX) deps.compile
 .PHONY: Linux_install Linux_update
 Linux_install Linux_update:
 	sudo apt update
 	sudo apt install -u `cat apt.txt`
 # / <section:install>
 # \ <section:merge>
-MERGE  = Makefile README.md .vscode $(S)
-MERGE += apt.txt
+MERGE  = Makefile README.md .vscode .gitignore apt.txt $(S)
 .PHONY: main
 main:
 	git push -v
